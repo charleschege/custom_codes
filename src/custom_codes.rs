@@ -14,6 +14,28 @@ pub enum CustomBool {
 /// Custom Response Codes Using Enums For Efficient Comparison
 #[derive(Debug,PartialEq, Eq, Clone)]
 pub enum DbOps {
+    /// A `Write` is unsuccessful
+    Inserted,
+    /// A `Change` is successful
+    Unchanged,
+    /// A `Command` is skipped since the document does not exist
+    Skipped,
+    /// Document already exists
+    AlreadyExists,
+    /// Document has been updated
+    Modified,
+    /// An Document has been deleted
+    Deleted,
+    /// Database is empty
+    Empty,
+    /// The command has been added to a queue
+    Queued,
+    /// Command has been removed from queue
+    DeQueued,
+    /// Log compaction successfull
+    CompactionTrue,
+    /// Log compaction unsuccessfull
+    CompactionFalse,
     /// Connection to a database is not available
     ConnRefused,
     /// Port is in use
@@ -38,18 +60,6 @@ pub enum DbOps {
     FieldReadDenied,
     /// Writing to a Field is denied
     FieldWriteDenied,
-    /// A `Write` is unsuccessful
-    Inserted,
-    /// A `Change` is successful
-    Unchanged,
-    /// A `Command` is skipped since the document does not exist
-    Skipped,
-    /// Document already exists
-    AlreadyExists,
-    /// Document has been updated
-    Modified,
-    /// An Document has been deleted
-    Deleted,
     /// A cluster in online and ready to receive commands
     ClusterOnline,
     /// A cluster is offline
@@ -66,16 +76,6 @@ pub enum DbOps {
     Logged,
     /// The details have not been logged
     NotLogged(Reason),
-    /// Database is empty
-    Empty,
-    /// The command has been added to a queue
-    Queued,
-    /// Command has been removed from queue
-    DeQueued,
-    /// Log compaction successfull
-    CompactionTrue,
-    /// Log compaction unsuccessfull
-    CompactionFalse,
 }
 
 /// Uniform `Type` for the cause of an operation
