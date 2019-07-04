@@ -74,7 +74,7 @@ pub enum DbOps {
     DeQueued,
     /// Log compaction successfull
     CompactionTrue,
-    /// Log compaction unsuccess
+    /// Log compaction unsuccessfull
     CompactionFalse,
 }
 
