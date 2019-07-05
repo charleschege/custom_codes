@@ -1,3 +1,5 @@
+use serde_derive::{Serialize, Deserialize};
+
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
