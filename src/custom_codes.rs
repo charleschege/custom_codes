@@ -1,5 +1,5 @@
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
     /// Similar to boolean true
     True,
@@ -12,7 +12,7 @@ pub enum CustomBool {
 }
 
 /// Custom Response Codes Using Enums For Efficient Comparison
-#[derive(Debug,PartialEq, Eq, Clone)]
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps {
     /// A `Write` is unsuccessful
     Inserted,
@@ -82,7 +82,7 @@ pub enum DbOps {
 type Reason = String;
 
 /// Command Operations for execution and 
-#[derive(Debug,PartialEq, Eq, Clone)]
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ExecCommand {
     /// Command Operation added to Queue
     Queued,
@@ -101,7 +101,7 @@ pub enum ExecCommand {
 }
 
 /// File operations
-#[derive(Debug,PartialEq, Eq, Clone)]
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum FileOps {
     /// Directory Access Denied
     DirAccessDenied,
@@ -181,7 +181,7 @@ pub enum FileOps {
 }
 
 /// Compression of files, bytes or directories
-#[derive(Debug,PartialEq, Eq, Clone)]
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Compression {
     /// Compression done
     Done,
@@ -199,7 +199,7 @@ pub enum Compression {
 
 
 /// Status of a subscription that happens over a timespec
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Subscription {
     /// Subscription is active
     Subscribed,
@@ -214,7 +214,7 @@ pub enum Subscription {
 }
 
 /// Status of an activity
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ActivityStatus {
     /// Status of an operation has been started
     Activated,
@@ -227,7 +227,7 @@ pub enum ActivityStatus {
 }
 
 /// Initialize an activity
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ActivityInit {
     /// Activate an operation
     Activate,
@@ -240,7 +240,7 @@ pub enum ActivityInit {
 }
 
 /// Date and time custom codes
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DateTimeOp {
     /// Date created
     DateCreated,
@@ -262,8 +262,8 @@ pub enum DateTimeOp {
     DateTimeUnspecified,
 }
 
-/// Security operations on encryptio and keys
-#[derive(Debug,PartialEq, Eq, Clone)]
+/// Security operations on encryption and keys
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecOps {
     /// Key could not be verified as it did not finish streaming
     KeyCorrupted,
@@ -297,8 +297,8 @@ pub enum SecOps {
     InvalidMAC,
 }
 
-/// Hardware Resources of a phyisical computer
-#[derive(Debug,PartialEq, Eq, Clone)]
+/// Hardware Resources of a physical computer
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum HardwareResources {
     /// CPU is under heavy load
     CpuUnderHeavyLoad,
@@ -424,7 +424,7 @@ pub enum HardwareResources {
 
 
 /// Networking Specific
-#[derive(Debug,PartialEq, Eq, Clone)]
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Networking {
     /// Permission to access network is denied
     NetworkAccessDenied,
@@ -469,6 +469,7 @@ pub enum Networking {
 }
 
 /// Hardware security access
+#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecHardware {
     /// USB Stick Hardware Key is available
     UsbKeyUp,
