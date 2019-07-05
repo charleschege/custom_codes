@@ -1,5 +1,8 @@
 use serde_derive::{Serialize, Deserialize};
 
+/// Uniform `Type` for the cause of an operation
+type Reason = String;
+
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
@@ -47,7 +50,7 @@ pub enum DbOps {
     /// An error occured when trying to execute a command at database level
     RuntimeError,
     /// Encountered Errors When Trying to connect to a database
-    EncounteredErrors(String),
+    EncounteredErrors(Reason),
     /// No Access to the DB is allowed for this user or process
     DbPermissionDenied,
     /// Read Access to database is Denied
@@ -79,9 +82,6 @@ pub enum DbOps {
     /// The details have not been logged
     NotLogged(Reason),
 }
-
-/// Uniform `Type` for the cause of an operation
-type Reason = String;
 
 /// Command Operations for execution and 
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
