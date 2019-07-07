@@ -31,6 +31,8 @@ pub enum DbOps {
     Modified,
     /// An Document has been deleted
     Deleted,
+    /// Key Not Found in Database, Field or Document depending on query
+    KeyNotFound,
     /// Database is empty
     Empty,
     /// The command has been added to a queue
