@@ -33,6 +33,10 @@ pub enum DbOps {
     Deleted,
     /// Key Not Found in Database, Field or Document depending on query
     KeyNotFound,
+    /// A Command or Query Has Not Been Executed
+    NotExecuted,
+    /// Two or more queries are not supposed to be used command eg. using `get` and `list` together
+    QueryConflictError,
     /// Database is empty
     Empty,
     /// The command has been added to a queue
