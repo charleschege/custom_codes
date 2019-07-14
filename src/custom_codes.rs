@@ -153,6 +153,8 @@ pub enum FileOps {
     ClosedFile,
     /// Unable To Open File
     OpenError,
+    /// The operation comleted with a given error
+    EncounteredErrors(Reason),
     /// Creation of the file is denied
     CreateDenied,
     /// Read acess to file is denied
