@@ -251,6 +251,19 @@ pub enum ActivityInit {
     NonInit,
 }
 
+/// Command Line Options
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub enum Cli {
+    /// Parsing
+    ParseInProgress,
+    /// Parsing Async
+    ParseAsync,
+    /// Not enough commandline arguments
+    NotEnoughArgs,
+    /// Encountered parsing errors
+    EncounteredErrors(Reason),
+}
+
 /// Date and time custom codes
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DateTimeOp {

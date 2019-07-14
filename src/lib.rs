@@ -24,6 +24,7 @@ pub use custom_codes::{
     DbOps, 
     CustomBool, 
     ExecCommand, 
+    Cli,
     Networking, 
     Subscription, 
     FileOps, 
