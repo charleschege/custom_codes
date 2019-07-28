@@ -9,7 +9,7 @@ pub enum Outcome {
     ///Result of Operation completed successfully
     Success,
     /// Result of Operation produced an error
-    Failure,
+    Failure(Reason),
     /// The result of the operation was forwarded to another operation
     Forward,
 }
