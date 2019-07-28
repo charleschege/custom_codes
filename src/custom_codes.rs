@@ -3,6 +3,17 @@ use serde_derive::{Serialize, Deserialize};
 /// Uniform `Type` for the cause of an operation
 type Reason = String;
 
+/// Give the Outcome of an operation
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub enum Outcome {
+    ///Result of Operation completed successfully
+    Success,
+    /// Result of Operation produced an error
+    Failure,
+    /// The result of the operation was forwarded to another operation
+    Forward,
+}
+
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {

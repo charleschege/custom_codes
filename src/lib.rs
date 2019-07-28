@@ -21,6 +21,7 @@
 //!
 
 pub use custom_codes::{
+    Outcome,
     DbOps, 
     CustomBool, 
     ExecCommand, 
