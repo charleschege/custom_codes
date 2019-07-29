@@ -22,6 +22,7 @@
 
 pub use custom_codes::{
     Outcome,
+    AccessStatus,
     DbOps, 
     CustomBool, 
     ExecCommand, 

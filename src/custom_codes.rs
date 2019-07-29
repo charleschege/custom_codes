@@ -14,6 +14,21 @@ pub enum Outcome {
     Forward,
 }
 
+/// Activity status of token or access
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub enum AccessStatus {
+    /// Process or User has been given a lease
+    Granted,
+    /// Token has been discarded
+    Revoked,
+    /// Access to token or session has expired
+    Expired,
+    /// Access has been denied
+    Denied,
+    /// Operation is being executed
+    InProgress,
+}
+
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
