@@ -57,6 +57,8 @@ pub enum DbOps {
     Modified,
     /// An Document has been deleted
     Deleted,
+    /// Key Found in KV Store/Database, Field or Document depending on query
+    KeyFound,
     /// Key Not Found in Database, Field or Document depending on query
     KeyNotFound,
     /// A Command or Query Has Not Been Executed
