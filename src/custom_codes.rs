@@ -32,7 +32,7 @@ pub enum AccessStatus {
     /// Random Authentication Code (RAC) Token is genuine/authentic and therefore has been accepted
     AccpetedRAC,
     ///  Random Authentication Code (RAC) Token is not genuine/authentic and therefore has been rejected
-    RejectedRac,
+    RejectedRAC,
 }
 
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
