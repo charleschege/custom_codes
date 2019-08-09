@@ -25,8 +25,14 @@ pub enum AccessStatus {
     Expired,
     /// Access has been denied
     Denied,
+    /// The access token has been rejected because it is not authentic/genuine
+    Rejected,
     /// Operation is being executed
     InProgress,
+    /// Random Authentication Code (RAC) Token is genuine/authentic and therefore has been accepted
+    AccpetedRAC,
+    ///  Random Authentication Code (RAC) Token is not genuine/authentic and therefore has been rejected
+    RejectedRac,
 }
 
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
