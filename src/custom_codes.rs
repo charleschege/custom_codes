@@ -354,6 +354,10 @@ pub enum SecOps {
     AuthenticMAC,
     /// Message Authentication Code is corrupted
     InvalidMAC,
+    /// Random Authentication Code (RAC) Token is genuine/authentic
+    ValidRAC,
+    ///  Random Authentication Code (RAC) Token is not genuine/authentic
+    InvalidRAC,
 }
 
 /// Hardware Resources of a physical computer
