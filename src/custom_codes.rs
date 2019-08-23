@@ -14,7 +14,7 @@ pub enum Outcome {
     Forward,
 }
 
-/// Activity status of token or access
+/// Access status of token or access
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum AccessStatus {
     /// Process or User has been given a lease
@@ -33,6 +33,8 @@ pub enum AccessStatus {
     AccpetedRAC,
     ///  Random Authentication Code (RAC) Token is not genuine/authentic and therefore has been rejected
     RejectedRAC,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
@@ -42,10 +44,8 @@ pub enum CustomBool {
     True,
     /// Similar to boolean false
     False,
-    /// Option does not exist
-    NonExist,
-    /// Option not initialized
-    NonInit,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// Custom Response Codes Using Enums For Efficient Comparison
@@ -121,6 +121,8 @@ pub enum DbOps {
     Logged,
     /// The details have not been logged
     NotLogged(Reason),
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// Command Operations for execution and 
@@ -140,6 +142,8 @@ pub enum ExecCommand {
     Killed,
     /// Command has finished execution
     Executed,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// File operations
@@ -241,6 +245,8 @@ pub enum Compression {
     ToBeDone,
     /// Streaming and compressing at the same time
     StreamCompress,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 
@@ -253,10 +259,8 @@ pub enum Subscription {
     Unsubscribed,
     /// Subscription is not yet activated
     NotActivated,
-    /// Subscription does not exist
-    NonExist,
-    /// Subscription operation has not been initialized
-    NonInit,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// Status of an activity
@@ -266,10 +270,8 @@ pub enum ActivityStatus {
     Activated,
     /// Status of an operation has been stopped
     Deactivated,
-    /// Status of an operation does not exist
-    NonExist,
     /// Status of an operation is not initialized
-    NonInit,
+    Unspecified,
 }
 
 /// Initialize an activity
@@ -279,10 +281,8 @@ pub enum ActivityInit {
     Activate,
     /// Deactivate an operation
     Deactivate,
-    /// Activity operation does not exists
-    NonExist,
-    /// Initialize an operation but dont execute
-    NonInit,
+    /// Status of an operation is not initialized
+    Unspecified,
 }
 
 /// Command Line Options
@@ -483,6 +483,8 @@ pub enum HardwareResources {
     GpsDevAccessDenied,
     /// The device is in airplane mode
     AirplaneMode,
+    /// Hardware not specified
+    Unspecified,
 }
 
 
@@ -529,6 +531,8 @@ pub enum Networking {
     NetDriverBuggy,
     /// An error ccured because of a malfunction or bug
     Other(Reason),
+    /// Network Unspecified
+    Unspecified,
 }
 
 /// Hardware security access
@@ -580,5 +584,6 @@ pub enum SecHardware {
     IrDevRxMode,
     /// Infra-red Device access denied
     IrDevAccessDenied,
-
+    /// Hardware Unspecified
+    Unspecified,
 }
