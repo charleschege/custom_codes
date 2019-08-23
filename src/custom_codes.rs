@@ -1,15 +1,12 @@
 use serde_derive::{Serialize, Deserialize};
 
-/// Uniform `Type` for the cause of an operation
-type Reason = String;
-
 /// Give the Outcome of an operation
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Outcome {
+pub enum Outcome<R> {
     ///Result of Operation completed successfully
     Success,
     /// Result of Operation produced an error
-    Failure(Reason),
+    Failure(R),
     /// The result of the operation was forwarded to another operation
     Forward,
 }
@@ -50,7 +47,7 @@ pub enum CustomBool {
 
 /// Custom Response Codes Using Enums For Efficient Comparison
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum DbOps {
+pub enum DbOps<R> {
     /// A `Write` is unsuccessful
     Inserted,
     /// A `Change` is successful
@@ -90,7 +87,7 @@ pub enum DbOps {
     /// An error occured when trying to execute a command at database level
     RuntimeError,
     /// Encountered Errors When Trying to connect to a database
-    EncounteredErrors(Reason),
+    EncounteredErrors(R),
     /// No Access to the DB is allowed for this user or process
     DbPermissionDenied,
     /// Read Access to database is Denied
@@ -120,7 +117,7 @@ pub enum DbOps {
     /// The details have been inserted to the specified logs
     Logged,
     /// The details have not been logged
-    NotLogged(Reason),
+    NotLogged(R),
     /// Status of an operation is not initialized
     Unspecified,
 }
@@ -148,7 +145,7 @@ pub enum ExecCommand {
 
 /// File operations
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum FileOps {
+pub enum FileOps<R> {
     /// Directory Access Denied
     DirAccessDenied,
     /// Directory is read only
@@ -192,7 +189,7 @@ pub enum FileOps {
     /// Unable To Open File
     OpenError,
     /// The operation comleted with a given error
-    EncounteredErrors(Reason),
+    EncounteredErrors(R),
     /// Creation of the file is denied
     CreateDenied,
     /// Read acess to file is denied
@@ -287,7 +284,7 @@ pub enum ActivityInit {
 
 /// Command Line Options
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Cli {
+pub enum Cli<R> {
     /// Parsing
     ParseInProgress,
     /// Parsing Async
@@ -295,7 +292,7 @@ pub enum Cli {
     /// Not enough commandline arguments
     NotEnoughArgs,
     /// Encountered parsing errors
-    EncounteredErrors(Reason),
+    EncounteredErrors(R),
 }
 
 /// Date and time custom codes
@@ -490,7 +487,7 @@ pub enum HardwareResources {
 
 /// Networking Specific
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Networking {
+pub enum Networking<R> {
     /// Permission to access network is denied
     NetworkAccessDenied,
     /// Network is available but unable to reach destination host
@@ -530,7 +527,7 @@ pub enum Networking {
     /// Connection Driver is buggy
     NetDriverBuggy,
     /// An error ccured because of a malfunction or bug
-    Other(Reason),
+    Other(R),
     /// Network Unspecified
     Unspecified,
 }
