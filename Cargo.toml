@@ -7,7 +7,7 @@ description = "Simple uniform response and error codes backed by enums"
 homepage = "https://github.com/charleschege/custom_codes"
 repository = "https://github.com/charleschege/custom_codes"
 
-license = "BSD-3-Clause"
+license = "Apache-2.0"
 
 [dependencies]
 serde = "1.0.94"
