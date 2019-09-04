@@ -58,6 +58,9 @@ pub enum DbOps<R> {
     AlreadyExists,
     /// Document has been updated
     Modified,
+        /// A document value has been `Swapped` replacing it with the new value provided
+        /// Especially useful for Key/Value stores
+    Swapped,
     /// An Document has been deleted
     Deleted,
     /// Key Found in KV Store/Database, Field or Document depending on query
