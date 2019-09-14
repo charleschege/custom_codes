@@ -353,8 +353,16 @@ pub enum ActivityToggle {
 pub enum Cli<R> {
     /// Parsing
     ParseInProgress,
-    /// Parsing Async
+    /// Parsed Arguments
+    ParseArgs,
+    /// Parsing Argument field in progress
+    ArgFieldParseInPorgress,
+    /// Parsed Argument field
+    ParsedArgField,
+    /// Parsing Asynchronously
     ParseAsync,
+    /// Parsing field Asynchronously
+    ArgFieldAsyncParseInPorgress,
     /// Not enough commandline arguments
     NotEnoughArgs,
     /// Encountered parsing errors
