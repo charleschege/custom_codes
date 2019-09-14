@@ -1,6 +1,12 @@
 use serde_derive::{Serialize, Deserialize};
 
-/// Give the Outcome of an operation
+    /// Give the Outcome of an operation
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::Outcome;
+    /// let foo = Outcome::<String>::Success;
+    /// assert_eq!(foo, Outcome::Success);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Outcome<R> {
     ///Result of Operation completed successfully
@@ -10,8 +16,13 @@ pub enum Outcome<R> {
     /// The result of the operation was forwarded to another operation
     Forward,
 }
-
-/// Access status of token or access
+    /// Access status of token or access
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::AccessStatus;
+    /// let foo = AccessStatus::Granted;
+    /// assert_eq!(foo, AccessStatus::Granted);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum AccessStatus {
     /// Process or User has been given a lease
@@ -34,7 +45,13 @@ pub enum AccessStatus {
     Unspecified,
 }
 
-/// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
+    /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::CustomBool;
+    /// let foo = CustomBool::Unspecified;
+    /// assert_eq!(foo, CustomBool::Unspecified);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
     /// Similar to boolean true
@@ -45,7 +62,13 @@ pub enum CustomBool {
     Unspecified,
 }
 
-/// Custom Response Codes Using Enums For Efficient Comparison
+    /// Custom Response Codes Using Enums For Efficient Comparison
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::DbOps;
+    /// let foo = DbOps::<String>::Inserted;
+    /// assert_eq!(foo, DbOps::<String>::Inserted);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps<R> {
     /// A `Write` is unsuccessful
@@ -125,7 +148,13 @@ pub enum DbOps<R> {
     Unspecified,
 }
 
-/// Command Operations for execution and 
+    /// Command Operations for execution
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::ExecCommand;
+    /// let foo = ExecCommand::Queued;
+    /// assert_eq!(foo, ExecCommand::Queued);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ExecCommand {
     /// Command Operation added to Queue
@@ -146,7 +175,13 @@ pub enum ExecCommand {
     Unspecified,
 }
 
-/// File operations
+    /// File operations
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::FileOps;
+    /// let foo = FileOps::<String>::DirAccessDenied;
+    /// assert_eq!(foo, FileOps::<String>::DirAccessDenied);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum FileOps<R> {
     /// Directory Access Denied
@@ -230,7 +265,13 @@ pub enum FileOps<R> {
     
 }
 
-/// Compression of files, bytes or directories
+    /// Compression of files, bytes or directories
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::Compression;
+    /// let foo = Compression::Done;
+    /// assert_eq!(foo, Compression::Done);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Compression {
     /// Compression done
@@ -250,7 +291,13 @@ pub enum Compression {
 }
 
 
-/// Status of a subscription that happens over a timespec
+    /// Status of a subscription that happens over a timespec
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::Subscription;
+    /// let foo = Subscription::Subscribed;
+    /// assert_eq!(foo, Subscription::Subscribed);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Subscription {
     /// Subscription is active
@@ -263,7 +310,13 @@ pub enum Subscription {
     Unspecified,
 }
 
-/// Status of an activity
+    /// Status of an activity
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::ActivityStatus;
+    /// let foo = ActivityStatus::Activated;
+    /// assert_eq!(foo, ActivityStatus::Activated);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ActivityStatus {
     /// Status of an operation has been started
@@ -273,10 +326,15 @@ pub enum ActivityStatus {
     /// Status of an operation is not initialized
     Unspecified,
 }
-
-/// Initialize an activity
+    /// Initialize an activity
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::ActivityToggle;
+    /// let foo = ActivityToggle::Activate;
+    /// assert_eq!(foo, ActivityToggle::Activate);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum ActivityInit {
+pub enum ActivityToggle {
     /// Activate an operation
     Activate,
     /// Deactivate an operation
@@ -284,8 +342,13 @@ pub enum ActivityInit {
     /// Status of an operation is not initialized
     Unspecified,
 }
-
-/// Command Line Options
+    /// Command Line Options
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::Cli;
+    /// let foo = Cli::<String>::ParseInProgress;
+    /// assert_eq!(foo, Cli::<String>::ParseInProgress);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Cli<R> {
     /// Parsing
@@ -297,8 +360,13 @@ pub enum Cli<R> {
     /// Encountered parsing errors
     EncounteredErrors(R),
 }
-
-/// Date and time custom codes
+    /// Date and time custom codes
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::DateTimeOp;
+    /// let foo = DateTimeOp::DateCreated;
+    /// assert_eq!(foo, DateTimeOp::DateCreated);
+    /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DateTimeOp {
     /// Date created
@@ -321,7 +389,13 @@ pub enum DateTimeOp {
     DateTimeUnspecified,
 }
 
-/// Security operations on encryption and keys
+    /// Security operations on encryption and keys
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::SecOps;
+    /// let foo = SecOps::KeyCorrupted;
+    /// assert_eq!(foo, SecOps::KeyCorrupted);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecOps {
     /// Key could not be verified as it did not finish streaming
@@ -360,7 +434,13 @@ pub enum SecOps {
     InvalidRAC,
 }
 
-/// Hardware Resources of a physical computer
+    /// Hardware Resources of a physical computer
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::HardwareResources;
+    /// let foo = HardwareResources::CpuMaxed;
+    /// assert_eq!(foo, HardwareResources::CpuMaxed);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum HardwareResources {
     /// CPU is under heavy load
@@ -488,7 +568,13 @@ pub enum HardwareResources {
 }
 
 
-/// Networking Specific
+    /// Networking Specific
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::Networking;
+    /// let foo = Networking::<String>::NetworkAccessDenied;
+    /// assert_eq!(foo, Networking::<String>::NetworkAccessDenied);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Networking<R> {
     /// Permission to access network is denied
@@ -535,7 +621,13 @@ pub enum Networking<R> {
     Unspecified,
 }
 
-/// Hardware security access
+    /// Hardware security access
+    /// ### Examples
+    /// ```
+    /// # use custom_codes::SecHardware;
+    /// let foo = SecHardware::UsbKeyUp;
+    /// assert_eq!(foo, SecHardware::UsbKeyUp);
+    /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecHardware {
     /// USB Stick Hardware Key is available
