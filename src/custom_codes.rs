@@ -449,6 +449,10 @@ pub enum HardwareResources {
     RamUnderHeavyLoad,
     /// CPU is maxed out
     CpuMaxed,
+    /// CPU is Overclocked
+    CpuOverclocked,
+    /// CPU is underclocked eg. to save power
+    CpuUnderclocked,
     /// Cpu is idle
     CpuIdle,
     /// CPU heat is normal
