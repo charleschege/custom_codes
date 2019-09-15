@@ -8,11 +8,11 @@ use serde_derive::{Serialize, Deserialize};
     /// assert_eq!(foo, Outcome::Success);
     /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Outcome<R> {
+pub enum Outcome {
     ///Result of Operation completed successfully
     Success,
     /// Result of Operation produced an error
-    Failure(R),
+    Failure,
     /// The result of the operation was forwarded to another operation
     Forward,
 }
@@ -70,7 +70,7 @@ pub enum CustomBool {
     /// assert_eq!(foo, DbOps::<String>::Inserted);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum DbOps<R> {
+pub enum DbOps {
     /// A `Write` is unsuccessful
     Inserted,
     /// A `Change` is successful
@@ -113,7 +113,7 @@ pub enum DbOps<R> {
     /// An error occured when trying to execute a command at database level
     RuntimeError,
     /// Encountered Errors When Trying to connect to a database
-    EncounteredErrors(R),
+    EncounteredErrors,
     /// No Access to the DB is allowed for this user or process
     DbPermissionDenied,
     /// Read Access to database is Denied
@@ -143,7 +143,7 @@ pub enum DbOps<R> {
     /// The details have been inserted to the specified logs
     Logged,
     /// The details have not been logged
-    NotLogged(R),
+    NotLogged,
     /// Status of an operation is not initialized
     Unspecified,
 }
@@ -183,7 +183,7 @@ pub enum ExecCommand {
     /// assert_eq!(foo, FileOps::<String>::DirAccessDenied);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum FileOps<R> {
+pub enum FileOps {
     /// Directory Access Denied
     DirAccessDenied,
     /// Directory is read only
@@ -227,7 +227,7 @@ pub enum FileOps<R> {
     /// Unable To Open File
     OpenError,
     /// The operation comleted with a given error
-    EncounteredErrors(R),
+    EncounteredErrors,
     /// Creation of the file is denied
     CreateDenied,
     /// Read acess to file is denied
@@ -350,7 +350,7 @@ pub enum ActivityToggle {
     /// assert_eq!(foo, Cli::<String>::ParseInProgress);
     /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Cli<R> {
+pub enum Cli {
     /// Parsing
     ParseInProgress,
     /// Parsed Arguments
@@ -366,7 +366,7 @@ pub enum Cli<R> {
     /// Not enough commandline arguments
     NotEnoughArgs,
     /// Encountered parsing errors
-    EncounteredErrors(R),
+    EncounteredErrors,
 }
     /// Date and time custom codes
     /// ### Examples
@@ -588,7 +588,7 @@ pub enum HardwareResources {
     /// assert_eq!(foo, Networking::<String>::NetworkAccessDenied);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum Networking<R> {
+pub enum Networking {
     /// Permission to access network is denied
     NetworkAccessDenied,
     /// Network is available but unable to reach destination host
@@ -627,8 +627,6 @@ pub enum Networking<R> {
     UnexpectedNetEof,
     /// Connection Driver is buggy
     NetDriverBuggy,
-    /// An error ccured because of a malfunction or bug
-    Other(R),
     /// Network Unspecified
     Unspecified,
 }
