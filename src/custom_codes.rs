@@ -4,7 +4,7 @@ use serde_derive::{Serialize, Deserialize};
     /// ### Examples
     /// ```
     /// # use custom_codes::Outcome;
-    /// let foo = Outcome::<String>::Success;
+    /// let foo = Outcome::Success;
     /// assert_eq!(foo, Outcome::Success);
     /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
@@ -66,8 +66,8 @@ pub enum CustomBool {
     /// ### Examples
     /// ```
     /// # use custom_codes::DbOps;
-    /// let foo = DbOps::<String>::Inserted;
-    /// assert_eq!(foo, DbOps::<String>::Inserted);
+    /// let foo = DbOps::Inserted;
+    /// assert_eq!(foo, DbOps::Inserted);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps {
@@ -179,8 +179,8 @@ pub enum ExecCommand {
     /// ### Examples
     /// ```
     /// # use custom_codes::FileOps;
-    /// let foo = FileOps::<String>::DirAccessDenied;
-    /// assert_eq!(foo, FileOps::<String>::DirAccessDenied);
+    /// let foo = FileOps::DirAccessDenied;
+    /// assert_eq!(foo, FileOps::DirAccessDenied);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum FileOps {
@@ -346,8 +346,8 @@ pub enum ActivityToggle {
     /// ### Examples
     /// ```
     /// # use custom_codes::Cli;
-    /// let foo = Cli::<String>::ParseInProgress;
-    /// assert_eq!(foo, Cli::<String>::ParseInProgress);
+    /// let foo = Cli::ParseInProgress;
+    /// assert_eq!(foo, Cli::ParseInProgress);
     /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Cli {
@@ -584,8 +584,8 @@ pub enum HardwareResources {
     /// ### Examples
     /// ```
     /// # use custom_codes::Networking;
-    /// let foo = Networking::<String>::NetworkAccessDenied;
-    /// assert_eq!(foo, Networking::<String>::NetworkAccessDenied);
+    /// let foo = Networking::NetworkAccessDenied;
+    /// assert_eq!(foo, Networking::NetworkAccessDenied);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Networking {
