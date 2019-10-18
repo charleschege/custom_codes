@@ -22,7 +22,9 @@ pub use crate::custom_codes::{
     SecOps,
     HardwareResources,
     ActivityToggle,
-    SecHardware
+    SecHardware,
+    AuthState,
+    TempLock,
 };
 
 mod custom_codes;
