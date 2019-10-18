@@ -1,6 +1,6 @@
 [package]
 name = "custom_codes"
-version = "1.1.0"
+version = "1.2.0"
 authors = ["Charles Chege <charleschege@protonmail.ch>"]
 edition = "2018"
 description = "Simple uniform response and error codes backed by enums"
@@ -12,3 +12,4 @@ license = "Apache-2.0"
 [dependencies]
 serde = "1.0.94"
 serde_derive = "1.0.94"
+tai64 = { path = "../crates/tai64", features = ["derive_serde"]}
