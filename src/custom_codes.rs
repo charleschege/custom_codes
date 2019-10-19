@@ -698,14 +698,14 @@ pub enum SecHardware {
     /// assert_eq!(foo, AuthState::Unspecified);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum AuthState {
+pub enum AuthState<'au> {
     /// Shows that the current state of an authentication mechanism is yet to be set by the user.
     /// This is used for accounts that have to be pre-registered then the user has to set the authentication mechanism there after
     Unspecified,
         /// shows that an account auth state is in normal state and visible to the user
     Transparent,
         /// shows that an accounts authentication is currently in a default state with a randomly generated authentication mechanism
-    RandomDefault,
+    RandomDefault(&'au str),
         /// shows that an account is currently authenticated for several devices
     MultiDevice,
         /// shows the account is authenticated for multiple users
