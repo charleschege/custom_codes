@@ -1,4 +1,5 @@
-use serde_derive::{Serialize, Deserialize};
+use serde::{Serialize, Deserialize};
+use redactedsecret::SecretString;
 
     /// Give the Outcome of an operation
     /// ### Examples
@@ -698,27 +699,22 @@ pub enum SecHardware {
     /// assert_eq!(foo, AuthState::Unspecified);
     /// ```
 #[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum AuthState<'au> {
+pub enum AuthState {
     /// Shows that the current state of an authentication mechanism is yet to be set by the user.
     /// This is used for accounts that have to be pre-registered then the user has to set the authentication mechanism there after
     Unspecified,
         /// shows that an account auth state is in normal state and visible to the user
-    Transparent,
+    Transparent(SecretString),
         /// shows that an accounts authentication is currently in a default state with a randomly generated authentication mechanism
-    RandomDefault(&'au str),
-        /// shows that an account is currently authenticated for several devices
-    MultiDevice,
-        /// shows the account is authenticated for multiple users
-    MultiAccount,
-        /// shows the account is autheticated for multiple users on multiple devices.
-    MultiAccountMultiDevice,
+    RandomDefault(SecretString),
         /// shows an account is temporary locked using a `TempLock`
     Locked(TempLock),
         /// shows that a user triggered an authentication for reset
-    ResetTriggered,
-        /// shows the authentication code for authentication reset has been triggered. 
-    ResetInProgress,
+    ResetTriggered(SecretString),
+        /// shows the authentication code via email/chat for authentication reset has been triggered. 
+    ResetInProgress(SecretString),
 }
+
     /// Creates a temporary lock if triggered
     /// ### Examples
     /// ```

@@ -5,12 +5,8 @@
     1. `RandomDefault` shows that an accounts authentication is currently in a default state with a randomly generated authentication mechanism
     2. `ResetTriggered` shows that a user triggered an authentication for reset
     3. `Transparent` shows that an account auth state is in normal state and visible to the user
-    4. `MultiDevice` shows that an account is currently authenticated for several devices
-    5. `ResetInProgress` shows the authentication code for authentication reset has been triggered. 
-    6. `MultiAccount` shows the account is authenticated for multiple users
-    7. `MultiAccountMultiDevice` shows the account is autheticated for multiple users on multiple devices.
-    8. `Unspecified` shows that the current state of an authentication mechanism is yet to be set by the user. This is used for accounts that have to be pre-registered then the user has to set the authentication mechanism there after
-    9. `TempLock` shows an account is temporary locked using a `TempLock`
+    4. `ResetInProgress` shows the authentication code for authentication reset has been triggered. for accounts that have to be pre-registered then the user has to set the authentication mechanism there after
+    5. `TempLock` shows an account is temporary locked using a `TempLock`
 
 - Add `TempLock` to give a user account a minimal reset time after multiple authentication attempts
     1. Duration(TAI64N) - set after a specified timeframe

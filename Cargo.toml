@@ -10,6 +10,6 @@ repository = "https://github.com/charleschege/custom_codes"
 license = "Apache-2.0"
 
 [dependencies]
-serde = "1.0.94"
-serde_derive = "1.0.94"
+serde = { version = "1.0.94", features = ["derive"] }
 tai64 = { path = "../tai64" }
+redactedsecret = { version = "0.4.0", features = ["serde"] }
