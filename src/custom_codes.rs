@@ -1,13 +1,13 @@
-use serde::{Serialize, Deserialize};
 use redactedsecret::SecretString;
+use serde::{Deserialize, Serialize};
 
-    /// Give the Outcome of an operation
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::Outcome;
-    /// let foo = Outcome::Success;
-    /// assert_eq!(foo, Outcome::Success);
-    /// ```
+/// Give the Outcome of an operation
+/// ### Examples
+/// ```
+/// # use custom_codes::Outcome;
+/// let foo = Outcome::Success;
+/// assert_eq!(foo, Outcome::Success);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Outcome {
     ///Result of Operation completed successfully
@@ -17,13 +17,13 @@ pub enum Outcome {
     /// The result of the operation was forwarded to another operation
     Forward,
 }
-    /// Access status of token or access
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::AccessStatus;
-    /// let foo = AccessStatus::Granted;
-    /// assert_eq!(foo, AccessStatus::Granted);
-    /// ```
+/// Access status of token or access
+/// ### Examples
+/// ```
+/// # use custom_codes::AccessStatus;
+/// let foo = AccessStatus::Granted;
+/// assert_eq!(foo, AccessStatus::Granted);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum AccessStatus {
     /// Process or User has been given a lease
@@ -46,13 +46,13 @@ pub enum AccessStatus {
     Unspecified,
 }
 
-    /// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::CustomBool;
-    /// let foo = CustomBool::Unspecified;
-    /// assert_eq!(foo, CustomBool::Unspecified);
-    /// ```
+/// Creates a custom `boolean` value with more features than a Rustlang boolean which has only `true` or `false`
+/// ### Examples
+/// ```
+/// # use custom_codes::CustomBool;
+/// let foo = CustomBool::Unspecified;
+/// assert_eq!(foo, CustomBool::Unspecified);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum CustomBool {
     /// Similar to boolean true
@@ -63,14 +63,14 @@ pub enum CustomBool {
     Unspecified,
 }
 
-    /// Custom Response Codes Using Enums For Efficient Comparison
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::DbOps;
-    /// let foo = DbOps::Inserted;
-    /// assert_eq!(foo, DbOps::Inserted);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Custom Response Codes Using Enums For Efficient Comparison
+/// ### Examples
+/// ```
+/// # use custom_codes::DbOps;
+/// let foo = DbOps::Inserted;
+/// assert_eq!(foo, DbOps::Inserted);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps {
     /// A `Write` is unsuccessful
     Inserted,
@@ -82,8 +82,8 @@ pub enum DbOps {
     AlreadyExists,
     /// Document has been updated
     Modified,
-        /// A document value has been `Swapped` replacing it with the new value provided
-        /// Especially useful for Key/Value stores
+    /// A document value has been `Swapped` replacing it with the new value provided
+    /// Especially useful for Key/Value stores
     Swapped,
     /// An Document has been deleted
     Deleted,
@@ -149,14 +149,14 @@ pub enum DbOps {
     Unspecified,
 }
 
-    /// Command Operations for execution
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::ExecCommand;
-    /// let foo = ExecCommand::Queued;
-    /// assert_eq!(foo, ExecCommand::Queued);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Command Operations for execution
+/// ### Examples
+/// ```
+/// # use custom_codes::ExecCommand;
+/// let foo = ExecCommand::Queued;
+/// assert_eq!(foo, ExecCommand::Queued);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ExecCommand {
     /// Command Operation added to Queue
     Queued,
@@ -176,14 +176,14 @@ pub enum ExecCommand {
     Unspecified,
 }
 
-    /// File operations
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::FileOps;
-    /// let foo = FileOps::DirAccessDenied;
-    /// assert_eq!(foo, FileOps::DirAccessDenied);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// File operations
+/// ### Examples
+/// ```
+/// # use custom_codes::FileOps;
+/// let foo = FileOps::DirAccessDenied;
+/// assert_eq!(foo, FileOps::DirAccessDenied);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum FileOps {
     /// Directory Access Denied
     DirAccessDenied,
@@ -241,7 +241,7 @@ pub enum FileOps {
     AppendDenied,
     /// Metadata has been added to file or directory
     MetadataAdded,
-    /// File or directory does not contain Metadata 
+    /// File or directory does not contain Metadata
     MetadataNotAvailable,
     /// metadata changed
     MetadataChanged,
@@ -263,17 +263,16 @@ pub enum FileOps {
     AppendTrue,
     /// Delete a file if it exists,
     DeleteTrue,
-    
 }
 
-    /// Compression of files, bytes or directories
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::Compression;
-    /// let foo = Compression::Done;
-    /// assert_eq!(foo, Compression::Done);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Compression of files, bytes or directories
+/// ### Examples
+/// ```
+/// # use custom_codes::Compression;
+/// let foo = Compression::Done;
+/// assert_eq!(foo, Compression::Done);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Compression {
     /// Compression done
     Done,
@@ -291,14 +290,13 @@ pub enum Compression {
     Unspecified,
 }
 
-
-    /// Status of a subscription that happens over a timespec
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::Subscription;
-    /// let foo = Subscription::Subscribed;
-    /// assert_eq!(foo, Subscription::Subscribed);
-    /// ```
+/// Status of a subscription that happens over a timespec
+/// ### Examples
+/// ```
+/// # use custom_codes::Subscription;
+/// let foo = Subscription::Subscribed;
+/// assert_eq!(foo, Subscription::Subscribed);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Subscription {
     /// Subscription is active
@@ -311,13 +309,13 @@ pub enum Subscription {
     Unspecified,
 }
 
-    /// Status of an activity
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::ActivityStatus;
-    /// let foo = ActivityStatus::Activated;
-    /// assert_eq!(foo, ActivityStatus::Activated);
-    /// ```
+/// Status of an activity
+/// ### Examples
+/// ```
+/// # use custom_codes::ActivityStatus;
+/// let foo = ActivityStatus::Activated;
+/// assert_eq!(foo, ActivityStatus::Activated);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ActivityStatus {
     /// Status of an operation has been started
@@ -327,13 +325,13 @@ pub enum ActivityStatus {
     /// Status of an operation is not initialized
     Unspecified,
 }
-    /// Initialize an activity
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::ActivityToggle;
-    /// let foo = ActivityToggle::Activate;
-    /// assert_eq!(foo, ActivityToggle::Activate);
-    /// ```
+/// Initialize an activity
+/// ### Examples
+/// ```
+/// # use custom_codes::ActivityToggle;
+/// let foo = ActivityToggle::Activate;
+/// assert_eq!(foo, ActivityToggle::Activate);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum ActivityToggle {
     /// Activate an operation
@@ -343,13 +341,13 @@ pub enum ActivityToggle {
     /// Status of an operation is not initialized
     Unspecified,
 }
-    /// Command Line Options
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::Cli;
-    /// let foo = Cli::ParseInProgress;
-    /// assert_eq!(foo, Cli::ParseInProgress);
-    /// ```
+/// Command Line Options
+/// ### Examples
+/// ```
+/// # use custom_codes::Cli;
+/// let foo = Cli::ParseInProgress;
+/// assert_eq!(foo, Cli::ParseInProgress);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Cli {
     /// Parsing
@@ -369,13 +367,13 @@ pub enum Cli {
     /// Encountered parsing errors
     EncounteredErrors,
 }
-    /// Date and time custom codes
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::DateTimeOp;
-    /// let foo = DateTimeOp::DateCreated;
-    /// assert_eq!(foo, DateTimeOp::DateCreated);
-    /// ```
+/// Date and time custom codes
+/// ### Examples
+/// ```
+/// # use custom_codes::DateTimeOp;
+/// let foo = DateTimeOp::DateCreated;
+/// assert_eq!(foo, DateTimeOp::DateCreated);
+/// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DateTimeOp {
     /// Date created
@@ -398,14 +396,14 @@ pub enum DateTimeOp {
     DateTimeUnspecified,
 }
 
-    /// Security operations on encryption and keys
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::SecOps;
-    /// let foo = SecOps::KeyCorrupted;
-    /// assert_eq!(foo, SecOps::KeyCorrupted);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Security operations on encryption and keys
+/// ### Examples
+/// ```
+/// # use custom_codes::SecOps;
+/// let foo = SecOps::KeyCorrupted;
+/// assert_eq!(foo, SecOps::KeyCorrupted);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecOps {
     /// Key could not be verified as it did not finish streaming
     KeyCorrupted,
@@ -443,14 +441,14 @@ pub enum SecOps {
     InvalidRAC,
 }
 
-    /// Hardware Resources of a physical computer
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::HardwareResources;
-    /// let foo = HardwareResources::CpuMaxed;
-    /// assert_eq!(foo, HardwareResources::CpuMaxed);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Hardware Resources of a physical computer
+/// ### Examples
+/// ```
+/// # use custom_codes::HardwareResources;
+/// let foo = HardwareResources::CpuMaxed;
+/// assert_eq!(foo, HardwareResources::CpuMaxed);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum HardwareResources {
     /// CPU is under heavy load
     CpuUnderHeavyLoad,
@@ -580,15 +578,14 @@ pub enum HardwareResources {
     Unspecified,
 }
 
-
-    /// Networking Specific
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::Networking;
-    /// let foo = Networking::NetworkAccessDenied;
-    /// assert_eq!(foo, Networking::NetworkAccessDenied);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Networking Specific
+/// ### Examples
+/// ```
+/// # use custom_codes::Networking;
+/// let foo = Networking::NetworkAccessDenied;
+/// assert_eq!(foo, Networking::NetworkAccessDenied);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum Networking {
     /// Permission to access network is denied
     NetworkAccessDenied,
@@ -632,14 +629,14 @@ pub enum Networking {
     Unspecified,
 }
 
-    /// Hardware security access
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::SecHardware;
-    /// let foo = SecHardware::UsbKeyUp;
-    /// assert_eq!(foo, SecHardware::UsbKeyUp);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
+/// Hardware security access
+/// ### Examples
+/// ```
+/// # use custom_codes::SecHardware;
+/// let foo = SecHardware::UsbKeyUp;
+/// assert_eq!(foo, SecHardware::UsbKeyUp);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum SecHardware {
     /// USB Stick Hardware Key is available
     UsbKeyUp,
@@ -689,57 +686,4 @@ pub enum SecHardware {
     IrDevAccessDenied,
     /// Hardware Unspecified
     Unspecified,
-}
-    /// Shows the current state of an authentication mechanism used by a user or node
-    /// The authentication mechanism can be of any kind including a Passphrase, PIN, Hardware etc.
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::AuthState;
-    /// let foo = AuthState::Unspecified;
-    /// assert_eq!(foo, AuthState::Unspecified);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum AuthState {
-    /// Shows that the current state of an authentication mechanism is yet to be set by the user.
-    /// This is used for accounts that have to be pre-registered then the user has to set the authentication mechanism there after
-    Unspecified,
-        /// shows that an account auth state is in normal state and visible to the user
-    Transparent(SecretString),
-        /// shows that an accounts authentication is currently in a default state with a randomly generated authentication mechanism
-    RandomDefault(SecretString),
-        /// shows an account is temporary locked using a `TempLock`
-    Locked(TempLock),
-        /// shows that a user triggered an authentication for reset
-    ResetTriggered(SecretString),
-        /// shows the authentication code via email/chat for authentication reset has been triggered. 
-    ResetInProgress(SecretString),
-}
-
-    /// Creates a temporary lock if triggered
-    /// ### Examples
-    /// ```
-    /// # use custom_codes::TempLock;
-    /// let foo = TempLock::RandomToMail;
-    /// assert_eq!(foo, TempLock::RandomToMail);
-    /// ```
-#[derive(Debug,PartialEq, Eq, Clone, Serialize, Deserialize)]
-pub enum TempLock {
-        /// set after a specified timeframe in TAI64N
-    Duration(tai64::TAI64N),
-        /// set only after a user/node confirms a random key from email address
-    RandomToMail,
-        /// set only after a user/node confirms a random key from a logged in device
-    RandomToNode,
-        /// set after another `associated` user authenticates the random key from an authorized device
-    RandomToUser,
-        /// set after multiple `associated` users authenticate the random key from their devices
-    RandomToMultiUser,
-        /// set only after an `SuperUser` authenticates the random key
-    RandomToSuperUser,
-        /// set only after an `Admin` authenticates the random key
-    RandomToAdmin,
-        /// set only after a `SubAdmin` authenticates the random key
-    RandomToSubAdmin,
-        /// set after multiple `associated` nodes authenticate the random key
-    RandomToMultiNode,
 }
