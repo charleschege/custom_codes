@@ -1,4 +1,3 @@
-use redactedsecret::SecretString;
 use serde::{Deserialize, Serialize};
 
 /// Give the Outcome of an operation
