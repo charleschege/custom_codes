@@ -100,9 +100,9 @@ pub enum DbOps {
     Queued,
     /// Command has been removed from queue
     DeQueued,
-    /// Log compaction successfull
+    /// Log compaction successful
     CompactionTrue,
-    /// Log compaction unsuccessfull
+    /// Log compaction unsuccessful
     CompactionFalse,
     /// Connection to a database is not available
     ConnRefused,
