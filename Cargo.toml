@@ -6,8 +6,13 @@ edition = "2018"
 description = "Simple uniform response and error codes backed by enums"
 homepage = "https://github.com/charleschege/custom_codes"
 repository = "https://github.com/charleschege/custom_codes"
-
+keywords = ["configuration", "codes"]
+categories = ["value-formatting", "config"]
+readme = "README.md"
 license = "Apache-2.0"
+
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 serde = { version = "1.0.94", features = ["derive"] }
