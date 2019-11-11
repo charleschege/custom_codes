@@ -8,7 +8,7 @@
 //! ### Create codes for File Operations
 //! ```no_run
 //! use custom_codes::FileOps;
-//! 
+//!
 //! fn open_file(file_name: &str) -> FileOps {
 //!     match std::fs::File::create(file_name) {
 //!         Ok(_) => FileOps::CreateTrue,
@@ -23,8 +23,8 @@
 /// re-exports
 pub use crate::custom_codes::{
     AccessStatus, ActivityStatus, ActivityToggle, Cli, Compression, CustomBool, DateTimeOp, DbOps,
-    ExecCommand, FileOps, HardwareResources, Networking, Outcome, GenericOutcome, SecHardware, SecOps,
-    Subscription,
+    ExecCommand, FileOps, GenericOutcome, HardwareResources, Networking, Outcome, SecHardware,
+    SecOps, Subscription,
 };
 
 mod custom_codes;
