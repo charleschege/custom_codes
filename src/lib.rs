@@ -9,7 +9,7 @@
 //! ```no_run
 //! use custom_codes::FileOps;
 //! 
-//! fn create_file(file_name: &str) -> FileOps {
+//! fn open_file(file_name: &str) -> FileOps {
 //!     match std::fs::File::create(file_name) {
 //!         Ok(_) => FileOps::CreateTrue,
 //!         Err(_) => FileOps::CreateFalse,
@@ -23,7 +23,7 @@
 /// re-exports
 pub use crate::custom_codes::{
     AccessStatus, ActivityStatus, ActivityToggle, Cli, Compression, CustomBool, DateTimeOp, DbOps,
-    ExecCommand, FileOps, HardwareResources, Networking, Outcome, SecHardware, SecOps,
+    ExecCommand, FileOps, HardwareResources, Networking, Outcome, GenericOutcome, SecHardware, SecOps,
     Subscription,
 };
 
