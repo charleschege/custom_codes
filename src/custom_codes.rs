@@ -16,6 +16,22 @@ pub enum Outcome {
     /// The result of the operation was forwarded to another operation
     Forward,
 }
+/// Give the Outcome of an operation with custom result as a generic
+/// ### Examples
+/// ```
+/// # use custom_codes::GenericOutcome;
+/// let foo = Outcome::Success;
+/// assert_eq!(foo, Outcome::Success);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub enum GenericOutcome<Reason> {
+    ///Result of Operation completed successfully
+    Success(Reason),
+    /// Result of Operation produced an error
+    Failure(Reason),
+    /// The result of the operation was forwarded to another operation
+    Forward(Reason),
+}
 /// Access status of token or access
 /// ### Examples
 /// ```
