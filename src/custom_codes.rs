@@ -20,8 +20,7 @@ pub enum Outcome {
 /// ### Examples
 /// ```
 /// # use custom_codes::GenericOutcome;
-/// let foo = Outcome::Success;
-/// assert_eq!(foo, Outcome::Success);
+/// let foo = Outcome::Success("Foo");
 /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum GenericOutcome<Reason> {
