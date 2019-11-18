@@ -86,6 +86,12 @@ pub enum CustomBool {
 /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps {
+    /// A `Write` to create a database is successfull
+    Created,
+    /// A database exists
+    DbFound,
+    /// A database has been created
+    DbDropped,
     /// A `Write` is unsuccessful
     Inserted,
     /// A `Change` is successful
