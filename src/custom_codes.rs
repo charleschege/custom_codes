@@ -165,6 +165,8 @@ pub enum DbOps {
     Logged,
     /// The details have not been logged
     NotLogged,
+    /// The Operation was interrupted and can be resumed
+    Interrupted,
     /// Status of an operation is not initialized
     Unspecified,
 }
@@ -192,6 +194,8 @@ pub enum ExecCommand {
     Killed,
     /// Command has finished execution
     Executed,
+    /// The Operation was interrupted and can be resumed
+    Interrupted,
     /// Status of an operation is not initialized
     Unspecified,
 }
@@ -281,6 +285,8 @@ pub enum FileOps {
     WriteFalse,
     /// Append to a file
     AppendTrue,
+    /// The Operation was interrupted and can be resumed
+    Interrupted,
     /// Delete a file if it exists,
     DeleteTrue,
 }
@@ -306,6 +312,8 @@ pub enum Compression {
     ToBeDone,
     /// Streaming and compressing at the same time
     StreamCompress,
+    /// The Operation was interrupted and can be resumed
+    Interrupted,
     /// Status of an operation is not initialized
     Unspecified,
 }
@@ -639,7 +647,7 @@ pub enum Networking {
     InvalidNetData,
     /// The network operation timed out
     NetTimedOut,
-    /// The network connection was interrupted while in progress
+    /// The Network Operation was interrupted and can be resumed
     Interrupted,
     /// Unexpected end of connection
     UnexpectedNetEof,
