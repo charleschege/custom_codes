@@ -209,6 +209,8 @@ pub enum ExecCommand {
 /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum FileOps {
+    /// Directory Created
+    DirCreated,
     /// Directory Access Denied
     DirAccessDenied,
     /// Directory is read only
@@ -227,6 +229,8 @@ pub enum FileOps {
     ReadDone,
     /// Write operation has been competed
     WriteDone,
+    /// The file or directory already exists
+    AlreadyExists,
     /// Update operation completed
     UpdateDone,
     /// Deletion operation completed
