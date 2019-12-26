@@ -98,6 +98,8 @@ pub enum DbOps {
     UnCommited,
     /// A `Write` is successful
     Inserted,
+    /// A `Change` is successful
+    Changed,
     /// A `Change` is unsuccessful
     Unchanged,
     /// A `Command` is skipped since the document does not exist
