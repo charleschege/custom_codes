@@ -90,15 +90,15 @@ pub enum DbOps {
     Created,
     /// A database exists
     DbFound,
-    /// A database has been created
+    /// A database has been removed
     DbDropped,
     /// A `Write` to a commit log was successful
     Commited,
     /// A `Write` to a commit log was unsuccessful
     UnCommited,
-    /// A `Write` is unsuccessful
+    /// A `Write` is successful
     Inserted,
-    /// A `Change` is successful
+    /// A `Change` is unsuccessful
     Unchanged,
     /// A `Command` is skipped since the document does not exist
     Skipped,
