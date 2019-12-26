@@ -94,6 +94,8 @@ pub enum DbOps {
     DbDropped,
     /// A `Write` to a commit log was successful
     Commited,
+    /// A `Write` to a commit log was unsuccessful
+    UnCommited,
     /// A `Write` is unsuccessful
     Inserted,
     /// A `Change` is successful
