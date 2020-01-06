@@ -290,7 +290,7 @@ pub enum FileOps {
     /// Unable To Open File
     OpenError,
     /// The operation comleted with a given error
-    EncounteredErrors,
+    EncounteredErrors(String),
     /// Creation of the file is denied
     CreateDenied,
     /// Read acess to file is denied
@@ -431,7 +431,7 @@ pub enum Cli {
     /// Not enough commandline arguments
     NotEnoughArgs,
     /// Encountered parsing errors
-    EncounteredErrors,
+    EncounteredErrors(String),
 }
 /// Date and time custom codes
 /// ### Examples
