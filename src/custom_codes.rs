@@ -86,12 +86,40 @@ pub enum CustomBool {
 /// ```
 #[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum DbOps {
-    /// A `Write` to create a database is successfull
-    Created,
-    /// A database exists
+    /// A Repository has been created
+    RepoCreated,
+    /// A Repository has been deleted
+    RepoDeleted,
+    /// A checksum of the database shows a database is consistent
+    DbIntegrityConsistent,
+    /// A checksum fo the database shows the database is not consistent
+    DbIntegrityCorrupted,
+    /// A checksum of the document is consistent
+    DocumentIntegrityConsistent,
+    /// A checksum fo the document is not consistent
+    DocumentIntegrityCorrupted,
+    /// Database has been created
+    DbCreated,
+    /// Database has been Found after a search
     DbFound,
+    /// Database does not exist
+    DbNotFound,
+    /// A Database has neen modified
+    DbModified,
     /// A database has been removed
     DbDropped,
+    /// Document has been created
+    DocumentCreated,
+    /// Document has been Found after a search
+    DocumentFound,
+    /// Document does not exist
+    DocumentNotFound,
+    /// A Document has neen modified
+    DocumentModified,
+    /// Document has been removed
+    DocumentDropped,
+    /// A `Write` to create a database is successfull
+    Created,
     /// A `Write` to a commit log was successful
     Commited,
     /// A `Write` to a commit log was unsuccessful
