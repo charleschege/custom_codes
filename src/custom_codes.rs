@@ -168,7 +168,7 @@ pub enum DbOps {
     /// An error occured when trying to execute a command at database level
     RuntimeError,
     /// Encountered Errors When Trying to connect to a database
-    EncounteredErrors,
+    EncounteredErrors(String),
     /// No Access to the DB is allowed for this user or process
     DbPermissionDenied,
     /// Read Access to database is Denied
