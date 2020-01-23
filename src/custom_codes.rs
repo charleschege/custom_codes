@@ -88,6 +88,8 @@ pub enum CustomBool {
 pub enum DbOps {
     /// A Repository has been created
     RepoCreated,
+    /// An empty Repository with no databases
+    RepoEmpty,
     /// A Repository has been deleted
     RepoDeleted,
     /// A checksum of the database shows a database is consistent
@@ -104,6 +106,8 @@ pub enum DbOps {
     DbFound,
     /// Database does not exist
     DbNotFound,
+    /// A list containing Databases
+    DbList,
     /// A Database has neen modified
     DbModified,
     /// A database has been removed
