@@ -114,6 +114,8 @@ pub enum DbOps {
     DbDropped,
     /// Document has been created
     DocumentCreated,
+    /// Document has been inserted
+    DocumentInserted,
     /// Document has been Found after a search
     DocumentFound,
     /// Document does not exist
