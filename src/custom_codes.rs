@@ -124,6 +124,18 @@ pub enum DbOps {
     DocumentModified,
     /// Document has been removed
     DocumentDropped,
+    /// Field has been created
+    FieldCreated,
+    /// Field has been inserted
+    FieldInserted,
+    /// Field has been Found after a search
+    FieldFound,
+    /// Field does not exist
+    FieldNotFound,
+    /// A Field has neen modified
+    FieldModified,
+    /// Field has been removed
+    FieldDropped,
     /// A `Write` to create a database is successfull
     Created,
     /// A `Write` to a commit log was successful
