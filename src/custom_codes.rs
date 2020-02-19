@@ -104,6 +104,8 @@ pub enum DbOps {
     DbCreated,
     /// Database has been Found after a search
     DbFound,
+    /// Database being inserted already exists in the repo
+    DbAlreadyExists,
     /// Database does not exist
     DbNotFound,
     /// A list containing Databases
@@ -118,6 +120,8 @@ pub enum DbOps {
     DocumentInserted,
     /// Document has been Found after a search
     DocumentFound,
+    /// Document being inserted already exists in the DB
+    DocumentAlreadyExists,
     /// Document does not exist
     DocumentNotFound,
     /// A Document has neen modified
@@ -130,6 +134,8 @@ pub enum DbOps {
     FieldInserted,
     /// Field has been Found after a search
     FieldFound,
+    /// Field being inserted already exists in the DB
+    FieldAlreadyExists,
     /// Field does not exist
     FieldNotFound,
     /// A Field has neen modified
