@@ -108,6 +108,8 @@ pub enum DbOps {
     DbAlreadyExists,
     /// Database does not exist
     DbNotFound,
+    /// Database is empty
+    DbEmpty,
     /// A list containing Databases
     DbList(Vec<String>),
     /// A Database has neen modified
