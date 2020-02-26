@@ -109,7 +109,7 @@ pub enum DbOps {
     /// Database does not exist
     DbNotFound,
     /// A list containing Databases
-    DbList,
+    DbList(Vec<String>),
     /// A Database has neen modified
     DbModified,
     /// A database has been removed
