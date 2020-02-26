@@ -14,7 +14,7 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
     - name: Run doc tests 
-      run: cargo +nightly --verbose test --doc --
+      run: cargo --verbose test --doc --
     - name: Run documentation 
-      run: cargo +nightly  --verbose doc
+      run: cargo  --verbose doc
 
