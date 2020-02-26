@@ -17,4 +17,11 @@ jobs:
       run: cargo --verbose test --doc --
     - name: Run documentation 
       run: cargo  --verbose doc
+    - name: Run fmt
+      run: cargo fmt -- --check
+    - name: Run Clippy
+      run: cargo clippy -- -Dwarnings 
+    - name: Run tests
+      run: cargo test
+
 
