@@ -122,6 +122,10 @@ pub enum DbOps {
     DocumentInserted,
     /// Document has been Found after a search
     DocumentFound,
+    /// Document is empty
+    DocumentEmpty,
+    /// List of Documents
+    DocumentList(Vec<String>),
     /// Document being inserted already exists in the DB
     DocumentAlreadyExists,
     /// Document does not exist
