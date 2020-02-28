@@ -144,6 +144,8 @@ pub enum DbOps {
     FieldAlreadyExists,
     /// Field does not exist
     FieldNotFound,
+    /// Contents of a field in heap allocated bytes
+    FieldContents(Vec<u8>),
     /// A Field has neen modified
     FieldModified,
     /// Field has been removed
