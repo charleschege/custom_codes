@@ -209,6 +209,14 @@ pub enum DbOps {
     ReadDenied,
     /// Write Access to database is Denied
     WriteDenied,
+    /// Access to the repo has been denied
+    RepoReadDenied,
+    /// Write to the repo has been denied
+    RepoWriteDenied,
+    /// Access to the database has been denied
+    DbReadDenied,
+    /// Write to the database has been denied
+    DbWriteDenied,
     /// Access to a certain Table or Denied is denied
     DocReadDenied,
     /// Write to a document is denied
