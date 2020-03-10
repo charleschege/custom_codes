@@ -91,7 +91,7 @@ pub enum DbOps {
     /// An empty Repository with no databases
     RepoEmpty,
     /// A Repository has been deleted
-    RepoDeleted,
+    RepoDropped,
     /// A checksum of the database shows a database is consistent
     DbIntegrityConsistent,
     /// A checksum fo the database shows the database is not consistent
