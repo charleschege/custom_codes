@@ -92,6 +92,8 @@ pub enum DbOps {
     RepoAlreadyExists,
     /// An empty Repository with no databases
     RepoEmpty,
+    /// An repository is not available on disk
+    RepoNotFound,
     /// A Repository has been deleted
     RepoDropped,
     /// A checksum of the database shows a database is consistent
@@ -205,28 +207,8 @@ pub enum DbOps {
     RuntimeError,
     /// Encountered Errors When Trying to connect to a database
     EncounteredErrors(String),
-    /// No Access to the DB is allowed for this user or process
-    DbPermissionDenied,
-    /// Read Access to database is Denied
-    ReadDenied,
-    /// Write Access to database is Denied
-    WriteDenied,
-    /// Access to the repo has been denied
-    RepoReadDenied,
-    /// Write to the repo has been denied
-    RepoWriteDenied,
-    /// Access to the database has been denied
-    DbReadDenied,
-    /// Write to the database has been denied
-    DbWriteDenied,
-    /// Access to a certain Table or Denied is denied
-    DocReadDenied,
-    /// Write to a document is denied
-    DocWriteDenied,
-    /// Access to a field is denied
-    FieldReadDenied,
-    /// Writing to a Field is denied
-    FieldWriteDenied,
+    /// No permissions to complete the I/O operation
+    PermissionDenied,
     /// A cluster in online and ready to receive commands
     ClusterOnline,
     /// A cluster is offline
