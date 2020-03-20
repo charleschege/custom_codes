@@ -531,6 +531,39 @@ pub enum SecOps {
     ValidRAC,
     ///  Random Authentication Code (RAC) Token is not genuine/authentic
     InvalidRAC,
+    /// Key Length is equal to the length needed by the cryptography algorithm
+    KeyLengthSane,
+    /// Key length too short
+    KeyTooShort(KeyLength),
+    /// Key Length is too long
+    KeyTooLong(KeyLength),
+}
+
+/// The length of a key in bytes needed by a cryptography algorithm
+/// ### Examples
+/// ```
+/// # use custom_codes::KeyLength;
+/// let foo = KeyLength::Bytes32;
+/// assert_eq!(foo, KeyLength::Bytes32);
+/// ```
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+pub enum KeyLength {
+    /// A custom key size specified as `usize` length
+    Custom(usize),
+    /// A Key length of 8 bytes
+    Bytes8,
+    /// A Key length of 16 bytes
+    Bytes16,
+    /// A Key length of 24 bytes
+    Bytes24,
+    /// A Key length of 32 bytes
+    Bytes32,
+    /// A Key length of 64 bytes
+    Bytes64,
+    /// A Key length of 128 bytes
+    Bytes128,
+    /// A Key length of 256 bytes
+    Bytes256,
 }
 
 /// Hardware Resources of a physical computer
