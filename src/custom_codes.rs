@@ -546,10 +546,8 @@ pub enum SecOps {
 /// let foo = KeyLength::Bytes32;
 /// assert_eq!(foo, KeyLength::Bytes32);
 /// ```
-#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize,)]
 pub enum KeyLength {
-    /// A custom key size specified as `usize` length
-    Custom(usize),
     /// A Key length of 8 bytes
     Bytes8,
     /// A Key length of 16 bytes
@@ -564,6 +562,66 @@ pub enum KeyLength {
     Bytes128,
     /// A Key length of 256 bytes
     Bytes256,
+    /// A Key length of 512 bytes
+    Bytes512,
+    /// A Key length of 1024 bytes
+    Bytes1024,
+    /// A Key length of 2048 bytes
+    Bytes2048,
+    /// A Key length of 4096 bytes
+    Bytes4096,
+}
+
+impl std::fmt::Display for KeyLength {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            KeyLength::Bytes8 => write!(f, "KeyLength::Bytes8"),
+            KeyLength::Bytes16 => write!(f, "KeyLength::Bytes16"),
+            KeyLength::Bytes24 => write!(f, "KeyLength::Bytes24"),
+            KeyLength::Bytes32 => write!(f, "KeyLength::Bytes32"),
+            KeyLength::Bytes64 => write!(f, "KeyLength::Bytes64"),
+            KeyLength::Bytes128 => write!(f, "KeyLength::Bytes128"),
+            KeyLength::Bytes256 => write!(f, "KeyLength::Bytes256"),
+            KeyLength::Bytes512 => write!(f, "KeyLength::Bytes512"),
+            KeyLength::Bytes1024 => write!(f, "KeyLength::Bytes1024"),
+            KeyLength::Bytes2048 => write!(f, "KeyLength::Bytes2048"),
+            KeyLength::Bytes4096 => write!(f, "KeyLength::Bytes4096"),
+        }
+    }
+}
+
+impl std::error::Error for KeyLength {
+    fn description(&self) -> &str {
+        match self {
+            KeyLength::Bytes8 => "The key is not 8 bytes in length",
+            KeyLength::Bytes16 => "The key is not 16 bytes in length",
+            KeyLength::Bytes24 => "The key is not 24 bytes in length",
+            KeyLength::Bytes32 => "The key is not 32 bytes in length",
+            KeyLength::Bytes64 => "The key is not 64 bytes in length",
+            KeyLength::Bytes128 => "The key is not 128 bytes in length",
+            KeyLength::Bytes256 => "The key is not 256 bytes in length",
+            KeyLength::Bytes512 => "The key is not 512 bytes in length",
+            KeyLength::Bytes1024 => "The key is not 1024 bytes in length",
+            KeyLength::Bytes2048 => "The key is not 2048 bytes in length",
+            KeyLength::Bytes4096 => "The key is not 4096 bytes in length",
+        }
+    }
+
+    fn cause(&self) -> Option<&dyn std::error::Error> {
+        match self {
+            KeyLength::Bytes8 => Some(&KeyLength::Bytes8),
+            KeyLength::Bytes16 => Some(&KeyLength::Bytes16),
+            KeyLength::Bytes24 => Some(&KeyLength::Bytes24),
+            KeyLength::Bytes32 => Some(&KeyLength::Bytes32),
+            KeyLength::Bytes64 => Some(&KeyLength::Bytes64),
+            KeyLength::Bytes128 => Some(&KeyLength::Bytes128),
+            KeyLength::Bytes256 => Some(&KeyLength::Bytes256),
+            KeyLength::Bytes512 => Some(&KeyLength::Bytes512),
+            KeyLength::Bytes1024 => Some(&KeyLength::Bytes1024),
+            KeyLength::Bytes2048 => Some(&KeyLength::Bytes2048),
+            KeyLength::Bytes4096 => Some(&KeyLength::Bytes4096),
+        }
+    }
 }
 
 /// Hardware Resources of a physical computer
