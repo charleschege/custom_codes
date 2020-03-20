@@ -514,15 +514,19 @@ pub enum SecOps {
     /// Data has been encrypted
     Encrypted,
     /// Key generation successful,
-    KeyGenTrue,
+    KeyGenSucceded,
     /// Key generation failed
     KeyGenFailed,
     /// Key has been deleted
     KeyDeleted,
     /// random data generated from Cryptographically Secure PRNG (CSPRNG)
     CryptoRandomGenerated,
+    /// random data generated from Cryptographically Secure PRNG (CSPRNG) was not generated successfully
+    CryptoRandomGenFailure,
     /// random data generated from Noncryptographic PRNG
     NonCryptoRandomGenerated,
+    /// random data generated from Noncryptographic PRNG was not generated successfully
+    NonCryptoRandomGenFailure,
     /// Message Authentication Code is authentic
     AuthenticMAC,
     /// Message Authentication Code is corrupted
@@ -537,6 +541,92 @@ pub enum SecOps {
     KeyTooShort(KeyLength),
     /// Key Length is too long
     KeyTooLong(KeyLength),
+}
+
+
+impl std::fmt::Display for SecOps {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            SecOps::KeyCorrupted => write!(f, "Key could not be verified as it did not finish streaming"),
+            SecOps::KeyAuthentic => write!(f, "Key Authentic and approved"),
+            SecOps::KeyInvalid => write!(f, "Key has been tampered with"),
+            SecOps::TimedOut => write!(f, "Timed Out while verification was in progress"),
+            SecOps::PossibleIdTheft => write!(f, "Possible Identity Forgery"),
+            SecOps::DataCorrupted => write!(f, "Data encrypted has been corrupted"),
+            SecOps::DataInvalid => write!(f, "Data has been tampered with"),
+            SecOps::Encrypted => write!(f, "Data has been encrypted"),
+            SecOps::KeyGenSucceded => write!(f, "Key generation successful"),
+            SecOps::KeyGenFailed => write!(f, "Key generation failed"),
+            SecOps::KeyDeleted => write!(f, "Key has been deleted"),
+            SecOps::CryptoRandomGenerated => write!(f, "random data generated from Cryptographically Secure PRNG (CSPRNG)"),
+            SecOps::CryptoRandomGenFailure => write!(f, "random data generated from Cryptographically Secure PRNG (CSPRNG) was not generated"),
+            SecOps::NonCryptoRandomGenerated => write!(f, "random data generated from Noncryptographic PRNG"),
+            SecOps::NonCryptoRandomGenFailure => write!(f, "random data generated from Noncryptographic PRNG was not generated"),
+            SecOps::AuthenticMAC => write!(f, "Message Authentication Code is authentic"),
+            SecOps::InvalidMAC => write!(f, "Message Authentication Code is corrupted"),
+            SecOps::ValidRAC => write!(f, "Random Authentication Code (RAC) Token is genuine/authentic"),
+            SecOps::InvalidRAC => write!(f, "Random Authentication Code (RAC) Token is not genuine/authentic"),
+            SecOps::KeyLengthSane => write!(f, "Key Length is equal to the length needed by the cryptography algorithm"),
+            SecOps::KeyTooShort(_) => write!(f, "Key length too short"),
+            SecOps::KeyTooLong(_) => write!(f, "Key Length is too long"),
+        }
+    }
+}
+
+impl std::error::Error for SecOps {
+    fn description(&self) -> &str {
+        match self {
+            SecOps::KeyCorrupted => "Key could not be verified as it did not finish streaming",
+            SecOps::KeyAuthentic => "Key Authentic and approved",
+            SecOps::KeyInvalid => "Key has been tampered with",
+            SecOps::TimedOut => "Timed Out while verification was in progress",
+            SecOps::PossibleIdTheft => "Possible Identity Forgery",
+            SecOps::DataCorrupted => "Data encrypted has been corrupted",
+            SecOps::DataInvalid => "Data has been tampered with",
+            SecOps::Encrypted => "Data has been encrypted",
+            SecOps::KeyGenSucceded => "Key generation successful",
+            SecOps::KeyGenFailed => "Key generation failed",
+            SecOps::KeyDeleted => "Key has been deleted",
+            SecOps::CryptoRandomGenerated => "random data generated from Cryptographically Secure PRNG (CSPRNG)",
+            SecOps::CryptoRandomGenFailure => "random data generated from Cryptographically Secure PRNG (CSPRNG) was not generated",
+            SecOps::NonCryptoRandomGenerated => "random data generated from Noncryptographic PRNG",
+            SecOps::NonCryptoRandomGenFailure => "random data generated from Noncryptographic PRNG was not generated",
+            SecOps::AuthenticMAC => "Message Authentication Code is authentic",
+            SecOps::InvalidMAC => "Message Authentication Code is corrupted",
+            SecOps::ValidRAC => "Random Authentication Code (RAC) Token is genuine/authentic",
+            SecOps::InvalidRAC => "Random Authentication Code (RAC) Token is not genuine/authentic",
+            SecOps::KeyLengthSane => "Key Length is equal to the length needed by the cryptography algorithm",
+            SecOps::KeyTooShort(_) => "Key length too short",
+            SecOps::KeyTooLong(_) => "Key Length is too long",
+        }
+    }
+
+    fn cause(&self) -> Option<&dyn std::error::Error> {
+        match self {
+            SecOps::KeyCorrupted => Some(&SecOps::KeyCorrupted),
+            SecOps::KeyAuthentic => Some(&SecOps::KeyAuthentic),
+            SecOps::KeyInvalid => Some(&SecOps::KeyInvalid),
+            SecOps::TimedOut => Some(&SecOps::TimedOut),
+            SecOps::PossibleIdTheft => Some(&SecOps::PossibleIdTheft),
+            SecOps::DataCorrupted => Some(&SecOps::DataCorrupted),
+            SecOps::DataInvalid => Some(&SecOps::DataInvalid),
+            SecOps::Encrypted => Some(&SecOps::Encrypted),
+            SecOps::KeyGenSucceded => Some(&SecOps::KeyGenSucceded),
+            SecOps::KeyGenFailed => Some(&SecOps::KeyGenFailed),
+            SecOps::KeyDeleted => Some(&SecOps::KeyDeleted),
+            SecOps::CryptoRandomGenerated => Some(&SecOps::CryptoRandomGenerated),
+            SecOps::CryptoRandomGenFailure => Some(&SecOps::CryptoRandomGenFailure),
+            SecOps::NonCryptoRandomGenerated => Some(&SecOps::NonCryptoRandomGenFailure),
+            SecOps::NonCryptoRandomGenFailure => Some(&SecOps::NonCryptoRandomGenFailure),
+            SecOps::AuthenticMAC => Some(&SecOps::AuthenticMAC),
+            SecOps::InvalidMAC => Some(&SecOps::InvalidMAC),
+            SecOps::ValidRAC => Some(&SecOps::ValidRAC),
+            SecOps::InvalidRAC => Some(&SecOps::InvalidRAC),
+            SecOps::KeyLengthSane => Some(&SecOps::KeyLengthSane),
+            SecOps::KeyTooShort(ref length) => length.source(),
+            SecOps::KeyTooLong(ref length) => length.source(),
+        }
+    }
 }
 
 /// The length of a key in bytes needed by a cryptography algorithm
