@@ -1,6 +1,6 @@
-use std::io::ErrorKind;
-use std::fmt;
 use std::error::Error;
+use std::fmt;
+use std::io::ErrorKind;
 
 /// Convert a `String`, `&'_ str`, `OsStr` or `OsString` into this type to enable downcasting to a borrowed string
 #[derive(Debug)]
@@ -12,10 +12,7 @@ impl<'se> fmt::Display for StringifyError<'se> {
     }
 }
 
-impl<'se> Error for StringifyError<'se> {
-    
-}
-
+impl<'se> Error for StringifyError<'se> {}
 
 /// All common errors for use in crates. They mirror std::io::ErrorKind;
 #[derive(Debug)]
@@ -102,11 +99,14 @@ pub fn try_downcast<'se>(error: anyhow::Error) -> DownCastErrors<'se> {
             ErrorKind::UnexpectedEof => DownCastErrors::UnexpectedEof,
             _ => DownCastErrors::Unspecified,
         }
-    }else if let Some(strip_prefix_error) = error.root_cause().downcast_ref::<std::path::StripPrefixError>() {
+    } else if let Some(strip_prefix_error) = error
+        .root_cause()
+        .downcast_ref::<std::path::StripPrefixError>()
+    {
         DownCastErrors::StripPrefixError(strip_prefix_error.clone())
-    }else if let Some(os_string_error) = error.root_cause().downcast_ref::<StringifyError>() {
+    } else if let Some(os_string_error) = error.root_cause().downcast_ref::<StringifyError>() {
         DownCastErrors::Stringify(os_string_error.0)
-    }else {
+    } else {
         DownCastErrors::Unmatched(error)
     }
 }

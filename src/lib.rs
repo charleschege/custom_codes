@@ -27,13 +27,12 @@ mod custom_codes;
 
 /// Add Macros for support
 mod anyhow_downcast;
-pub use crate::anyhow_downcast::{StringifyError, DownCastErrors, try_downcast};
+pub use crate::anyhow_downcast::{try_downcast, DownCastErrors, StringifyError};
 
 /// Try downcasting any error to std::io::Error
 #[macro_export]
 macro_rules! downcast {
     ($error:expr) => {
         try_downcast(anyhow::Error::new($error))
-    }
+    };
 }
-

@@ -543,7 +543,6 @@ pub enum SecOps {
     KeyTooLong(KeyLength),
 }
 
-
 impl std::fmt::Display for SecOps {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
@@ -636,7 +635,7 @@ impl std::error::Error for SecOps {
 /// let foo = KeyLength::Bytes32;
 /// assert_eq!(foo, KeyLength::Bytes32);
 /// ```
-#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize,)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub enum KeyLength {
     /// A Key length of 8 bytes
     Bytes8,
