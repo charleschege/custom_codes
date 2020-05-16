@@ -16,3 +16,4 @@ maintenance = { status = "actively-developed" }
 
 [dependencies]
 serde = { version = "1.0.94", features = ["derive"] }
+anyhow = "1.0.28"

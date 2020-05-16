@@ -24,3 +24,16 @@
 pub use crate::custom_codes::*;
 
 mod custom_codes;
+
+/// Add Macros for support
+mod anyhow_downcast;
+pub use crate::anyhow_downcast::{StringifyError, DownCastErrors, try_downcast};
+
+/// Try downcasting any error to std::io::Error
+#[macro_export]
+macro_rules! downcast {
+    ($error:expr) => {
+        try_downcast(anyhow::Error::new($error))
+    }
+}
+
