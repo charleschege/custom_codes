@@ -69,6 +69,14 @@ pub enum DownCastErrors<'se> {
     StripPrefixError(std::path::StripPrefixError),
     /// An `OsString` Error
     Stringify(&'se str),
+    /// The file is invalid
+    InvalidFile,
+    /// Name of a file is invalid
+    InvalidFileName,
+    /// Path is not a directory
+    InvalidFolder,
+    /// Path is not valid
+    InvalidPath,
     /// No matches were found when downcasting the error to `std::io::Error` so it is not an `I/O` error
     Unmatched(anyhow::Error),
 }
@@ -106,7 +114,62 @@ pub fn try_downcast<'se>(error: anyhow::Error) -> DownCastErrors<'se> {
         DownCastErrors::StripPrefixError(strip_prefix_error.clone())
     } else if let Some(os_string_error) = error.root_cause().downcast_ref::<StringifyError>() {
         DownCastErrors::Stringify(os_string_error.0)
+    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFile>() {
+        DownCastErrors::InvalidFile
+    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFileName>() {
+        DownCastErrors::InvalidFileName
+    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFolder>() {
+        DownCastErrors::InvalidFolder
+    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidPath>() {
+        DownCastErrors::InvalidPath
     } else {
         DownCastErrors::Unmatched(error)
     }
 }
+
+/// Enables downcasting an invalid file to produce `DownCastError`
+#[derive(Debug)]
+pub struct InvalidFile;
+
+impl fmt::Display for InvalidFile {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self)
+    }
+}
+
+impl Error for InvalidFile {}
+
+/// Enables downcasting an invalid file name to produce `DownCastError`
+#[derive(Debug)]
+pub struct InvalidFileName;
+
+impl fmt::Display for InvalidFileName {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self)
+    }
+}
+
+impl Error for InvalidFileName {}
+
+/// Enables downcasting an invalid folder to produce `DownCastError`
+#[derive(Debug)]
+pub struct InvalidFolder;
+
+impl fmt::Display for InvalidFolder {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self)
+    }
+}
+
+impl Error for InvalidFolder {}
+/// Enables downcasting an invalid folder to produce `DownCastError`
+#[derive(Debug)]
+pub struct InvalidPath;
+
+impl fmt::Display for InvalidPath {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self)
+    }
+}
+
+impl Error for InvalidPath {}
