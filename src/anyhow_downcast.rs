@@ -2,17 +2,29 @@ use std::error::Error;
 use std::fmt;
 use std::io::ErrorKind;
 
-/// Convert a `String`, `&'_ str`, `OsStr` or `OsString` into this type to enable downcasting to a borrowed string
+/// Eenable downcasting to a borrowed string
 #[derive(Debug)]
-pub struct StringifyError<'se>(pub &'se str);
+pub struct BorrowedStr<'se>(pub &'se str);
 
-impl<'se> fmt::Display for StringifyError<'se> {
+impl<'se> fmt::Display for BorrowedStr<'se> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.0)
     }
 }
 
-impl<'se> Error for StringifyError<'se> {}
+impl<'se> Error for BorrowedStr<'se> {}
+
+/// Convert a `String`, `&'_ str`, `OsStr` or `OsString` into this type to enable downcasting to a string
+#[derive(Debug)]
+pub struct StringifyError(pub String);
+
+impl<'se> fmt::Display for StringifyError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
+impl<'se> Error for StringifyError {}
 
 /// All common errors for use in crates. They mirror std::io::ErrorKind;
 #[derive(Debug)]
@@ -68,7 +80,9 @@ pub enum DownCastErrors<'se> {
     /// Any `StripPrefix`  error
     StripPrefixError(std::path::StripPrefixError),
     /// An `OsString` Error
-    Stringify(&'se str),
+    Stringify(String),
+    /// Returns an error as a borrowed string
+    BorrowedStr(&'se str),
     /// The file is invalid
     InvalidFile,
     /// Name of a file is invalid
@@ -113,7 +127,9 @@ pub fn try_downcast<'se>(error: anyhow::Error) -> DownCastErrors<'se> {
     {
         DownCastErrors::StripPrefixError(strip_prefix_error.clone())
     } else if let Some(os_string_error) = error.root_cause().downcast_ref::<StringifyError>() {
-        DownCastErrors::Stringify(os_string_error.0)
+        DownCastErrors::Stringify(os_string_error.0.clone())
+    } else if let Some(borrowed_str) = error.root_cause().downcast_ref::<BorrowedStr>() {
+        DownCastErrors::BorrowedStr(borrowed_str.0)
     } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFile>() {
         DownCastErrors::InvalidFile
     } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFileName>() {
