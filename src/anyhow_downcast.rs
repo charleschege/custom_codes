@@ -92,11 +92,11 @@ pub enum DownCastErrors<'se> {
     /// Path is not valid
     InvalidPath,
     /// No matches were found when downcasting the error to `std::io::Error` so it is not an `I/O` error
-    Unmatched(anyhow::Error),
+    Unmatched(&'se anyhow::Error),
 }
 
 /// This method tries to downcast an `anyhow::Error` to return a `DownCastErrors` enum for common error handling
-pub fn try_downcast<'se>(error: anyhow::Error) -> DownCastErrors<'se> {
+pub fn try_downcast<'se>(error: &'se anyhow::Error) -> DownCastErrors<'se> {
     if let Some(ioerror) = error.root_cause().downcast_ref::<std::io::Error>() {
         let kind = ioerror.kind();
 
