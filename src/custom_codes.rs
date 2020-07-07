@@ -153,7 +153,7 @@ pub enum DbOps {
     /// Contents of a field in heap allocated bytes
     FieldContents(Vec<u8>),
     /// List of fields in a document
-    FieldList(Vec<String>),
+    FieldList(Vec<Vec<u8>>),
     /// A Field has neen modified
     FieldModified,
     /// Field has been removed
