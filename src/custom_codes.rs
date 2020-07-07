@@ -88,6 +88,8 @@ pub enum CustomBool {
 pub enum DbOps {
     /// A Repository has been created
     RepoCreated,
+    /// A Repository has been initialized by loading all contents of the repo
+    RepoInitialized,
     /// The repository trying to be created already exists
     RepoAlreadyExists,
     /// An empty Repository with no databases
