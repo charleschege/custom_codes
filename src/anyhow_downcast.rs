@@ -96,7 +96,7 @@ pub enum DownCastErrors<'se> {
 }
 
 /// This method tries to downcast an `anyhow::Error` to return a `DownCastErrors` enum for common error handling
-pub fn try_downcast<'se>(error: &'se anyhow::Error) -> DownCastErrors<'se> {
+pub fn try_downcast(error: &anyhow::Error) -> DownCastErrors{
     if let Some(ioerror) = error.root_cause().downcast_ref::<std::io::Error>() {
         let kind = ioerror.kind();
 
@@ -130,13 +130,13 @@ pub fn try_downcast<'se>(error: &'se anyhow::Error) -> DownCastErrors<'se> {
         DownCastErrors::Stringify(os_string_error.0.clone())
     } else if let Some(borrowed_str) = error.root_cause().downcast_ref::<BorrowedStr>() {
         DownCastErrors::BorrowedStr(borrowed_str.0)
-    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFile>() {
+    } else if error.root_cause().downcast_ref::<InvalidFile>().is_some() {
         DownCastErrors::InvalidFile
-    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFileName>() {
+    } else if error.root_cause().downcast_ref::<InvalidFileName>().is_some() {
         DownCastErrors::InvalidFileName
-    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidFolder>() {
+    } else if error.root_cause().downcast_ref::<InvalidFolder>().is_some() {
         DownCastErrors::InvalidFolder
-    } else if let Some(_) = error.root_cause().downcast_ref::<InvalidPath>() {
+    } else if error.root_cause().downcast_ref::<InvalidPath>().is_some() {
         DownCastErrors::InvalidPath
     } else {
         DownCastErrors::Unmatched(error)

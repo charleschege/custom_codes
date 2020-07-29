@@ -15,9 +15,8 @@
 //!         Err(_) => FileOps::CreateFalse,
 //!     }
 //! }
-//! fn main() {
-//!     open_file("foo.txt");
-//! }
+//! 
+//! open_file("foo.txt");
 //! ```
 
 /// re-exports
