@@ -15,7 +15,7 @@
 //!         Err(_) => FileOps::CreateFalse,
 //!     }
 //! }
-//! 
+//!
 //! open_file("foo.txt");
 //! ```
 
